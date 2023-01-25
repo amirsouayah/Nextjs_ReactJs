@@ -15,8 +15,8 @@ function Footer() {
             <div className='space-y-4 text-xs text-gray-800'>
                 <h5 className='font-bold'>About</h5>
                 <p>How Sevens Works</p>
-                <p>Hello</p>
-                <p>Hi</p>
+                <p>Newsroom</p>
+                <p>Investors</p>
                 <p>Sevens plus</p>
                 <p>Sevens Luxe</p>
             </div>
