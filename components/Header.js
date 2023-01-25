@@ -4,15 +4,22 @@ import { useState } from "react";
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from "next/router";
 
 function Header() {
     const [searchInput, setSearchInput] = useState('')
     const [startDate, setStartDate] = useState(new Date())
     const [endtDate, setEndDate] = useState(new Date())
+    const [noOfGuests, setNoOfGuests] = useState(1)
+    const router = useRouter();
 
     const handleSelect = (ranges) => {
         setStartDate(ranges.selection.startDate)
         setEndDate(ranges.selection.endDate)
+    }
+
+    const resetInput = () => {
+        setSearchInput("")
     }
     const selectionRange = {
         startDate: startDate,
@@ -25,23 +32,31 @@ function Header() {
         <header className="sticky top-0 z-50 grid grid-cols-3 bg-white 
         shadow-md p-5 md:px-10 ">
             {/* left */}
-            <div className="realtive flex items-center h-10 cursor-auto 
-            my-auto">
-                {/* <Image
-                    className="w-1/5"
-                    src='https://links.papareact.com/qd3'
-                    layout="fill"
-                    objectFit="contain"
-                    objectPosition="left"
-                    alt="logo"
-                    position='static'
-                /> */}
+            <div className="">
+                <div onClick={() => router.push('/')} className="flex shrink-0 space-x-3">
+                    <Image
+                        className="rounded-full mr-3"
+                        src='https://scontent-cdt1-1.xx.fbcdn.net/v/t39.30808-6/305627010_484120090388458_7367717883715553588_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=ypYbRPVjKjkAX84CH_r&tn=M8l7FD4dhX9owSMa&_nc_ht=scontent-cdt1-1.xx&oh=00_AfClRahHUO_HdlbbhycjxVnFy7VtcxoKK13h9CPqIWuh9A&oe=63D55887'
+                        // layout="fill"
+                        width={45}
+                        height={45}
+                        alt="logo"
+                        position='static'
+                    />
+                    <div className="text-center space-y-2 ">
+                        <div className="space-y-0.5">
+                            <p className="text-lg text-black font-semibold mt-2">
+                                Sevens
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* Middle */}
             <div className="flex items-center 
-            md:border-2 rounded-full py-2 
-            md:shadow-sm">
+            border-2 rounded-full py-2 
+            shadow-sm">
                 <input
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
@@ -80,6 +95,21 @@ function Header() {
                             Number of Guests
                         </h2>
                         <UsersIcon className="h-5" />
+                        <input
+                            value={noOfGuests}
+                            onChange={e => setNoOfGuests(e.target.value)}
+                            min={1}
+                            type="number"
+                            className="w-12 pl-2 text-lg 
+                            outline-none text-red-400"/>
+                    </div>
+                    <div className="flex ">
+                        <button
+                            onClick={resetInput}
+                            className="flex-grow text-gray-500">
+                            Cancel
+                        </button>
+                        <button className="flex-grow text-red-400">Search</button>
                     </div>
                 </div>
             )}
