@@ -1,4 +1,4 @@
-import Image from "next/image"
+import Image from "next/legacy/image"
 
 function SmallCard({ img, location, distance }) {
     return <div className="flex items-center m-2 mt-5 space-x-4 rounded-xl
