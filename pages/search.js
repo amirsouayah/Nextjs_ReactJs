@@ -2,8 +2,10 @@ import { useRouter } from 'next/router'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
 import { format } from 'date-fns'
-function Search() {
+function Search({ searchResult }) {
     const router = useRouter();
+
+    console.log(searchResult);
 
     // Es6 Destructuring 
     const { location, startDate, endDate, noOfGuests } = router.query;
@@ -39,4 +41,15 @@ function Search() {
     )
 }
 
-export default Search
+export default Search;
+
+export async function getServerSideProps() {
+    const searchResult = await fetch('https://www.jsonkeeper.com/b/5NPS').
+        then(res => res.json());
+
+    return {
+        props: {
+            searchResult,
+        },
+    }
+}
