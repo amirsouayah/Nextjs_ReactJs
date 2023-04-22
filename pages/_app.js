@@ -18,7 +18,8 @@ Router.events.on('routeChangeError', progress.finish);
 
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Component {...pageProps} />)
 }
 
 export default MyApp

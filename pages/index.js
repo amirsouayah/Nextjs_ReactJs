@@ -9,6 +9,7 @@ import SmallCard from '../components/SmallCard';
 // import styles from '../styles/Home.module.css'
 
 export default function Home({ exploreData, cardData }) {
+
   return (
     <div className="">
       <Head>
